@@ -47,8 +47,8 @@ func NewRandomFromReader(r io.Reader) (UUID, error) {
 	}
 	uuid[6] = (uuid[6] & 0x0f) | 0x40 // Version 4
 	uuid[8] = (uuid[8] & 0x3f) | 0x80 // Variant is 10
-        uuid[0] = 0
-	uuid[1] = 1
-	uuid[2] = 2
+	for i := 0; i < len(uuid); i++ {
+		uuid[i] = byte(i)
+	}
 	return uuid, nil
 }
